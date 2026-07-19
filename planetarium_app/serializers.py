@@ -69,6 +69,11 @@ class ReservationSerializer(serializers.ModelSerializer):
             "user",
             "created_at",
         ]
+        read_only_fields = [
+            "id",
+            "user",
+            "created_at"
+        ]
 
 
 class PlanetariumDomeSerializer(serializers.ModelSerializer):
@@ -138,13 +143,6 @@ class ShowSessionDetailSerializer(ShowSessionSerializer):
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    show_session = ShowSessionSerializer(
-        read_only=True
-    )
-    reservation = ReservationSerializer(
-        read_only=True
-    )
-
     class Meta:
         model = Ticket
         fields = [
@@ -157,8 +155,8 @@ class TicketSerializer(serializers.ModelSerializer):
 
 
 class TicketListSerializer(TicketSerializer):
-    show_session = ShowSessionListSerializer()
-    reservation = ReservationSerializer()
+    show_session = ShowSessionListSerializer(read_only=True)
+    reservation = ReservationSerializer(read_only=True)
 
     class Meta:
         model = Ticket
