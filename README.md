@@ -67,7 +67,7 @@ python manage.py migrate
 ### 5. (Optional) Load sample data
 
 ```bash
-python manage.py loaddata planetarium_fixture.json
+python manage.py loaddata data_fixture.json
 ```
 
 ### 6. Create a superuser
