@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.db import transaction
-from planetarium_app.models import (
+from .models import (
     ShowTheme,
     AstronomyShow,
     AstronomyShowTheme,

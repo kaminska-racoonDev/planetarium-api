@@ -15,7 +15,7 @@ A RESTful API for managing a planetarium — astronomy shows, show sessions, dom
 - Available Seats — automatically calculated per session based on dome capacity
 - Filtering — filter shows and sessions by title and theme; filter domes by name
 - JWT Authentication — secure access with access and refresh tokens
-- Swagger UI — interactive API documentation at `/api/v1/doc/`
+- Swagger UI — interactive API documentation at `/api/v1/doc/swagger/`
 - Admin panel — manage all data via Django admin at `/admin/`
 
 ---

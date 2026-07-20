@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from planetarium_app.tests.helpers import (
+from .helpers import (
     create_show_session,
     create_planetarium_dome,
     create_astronomy_show,
