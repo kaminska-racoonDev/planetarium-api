@@ -1,10 +1,10 @@
 from rest_framework import viewsets, mixins
-from .permissions import (
+from planetarium_app.permissions import (
     IsAdminOrIfAuthenticatedReadOnly,
     IsAdminOrReadOnly,
 )
 from rest_framework.permissions import IsAuthenticated
-from .serializers import (
+from planetarium_app.serializers import (
     ShowThemeSerializer,
     ShowSessionListSerializer,
     AstronomyShowSerializer,
@@ -16,7 +16,7 @@ from .serializers import (
     ShowSessionDetailSerializer,
     PlanetariumDomeSerializer,
 )
-from .models import (
+from planetarium_app.models import (
     ShowTheme,
     AstronomyShow,
     Reservation,

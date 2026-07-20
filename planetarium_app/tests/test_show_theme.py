@@ -3,9 +3,9 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from .models import ShowTheme
+from planetarium_app.models import ShowTheme
 
-from .serializers import ShowThemeSerializer
+from planetarium_app.serializers import ShowThemeSerializer
 
 
 User = get_user_model()

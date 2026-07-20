@@ -1,13 +1,13 @@
-from .serializers import AstronomyShowListSerializer
+from planetarium_app.serializers import AstronomyShowListSerializer
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from .models import (
+from planetarium_app.models import (
     AstronomyShow
 )
-from .helpers import (
+from tests.helpers import (
     create_show_theme,
     create_astronomy_show,
 )

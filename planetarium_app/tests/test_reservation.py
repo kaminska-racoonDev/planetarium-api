@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from .helpers import create_reservation
+from tests.helpers import create_reservation
 
 User = get_user_model()
 
