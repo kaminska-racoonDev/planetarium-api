@@ -24,37 +24,19 @@ from planetarium_app.models import (
     ShowSession,
     Ticket,
 )
+from planetarium_app.utils import params_to_ints
 
 
-class ShowThemeViewSet(
-    mixins.ListModelMixin,
-    mixins.CreateModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.DestroyModelMixin,
-    mixins.RetrieveModelMixin,
-    viewsets.GenericViewSet
-):
+class ShowThemeViewSet(viewsets.ModelViewSet):
     queryset = ShowTheme.objects.all()
     serializer_class = ShowThemeSerializer
     permission_classes = (IsAdminOrReadOnly,)
 
 
-class AstronomyShowViewSet(
-    mixins.ListModelMixin,
-    mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.DestroyModelMixin,
-    viewsets.GenericViewSet
-):
+class AstronomyShowViewSet(viewsets.ModelViewSet):
     queryset = AstronomyShow.objects.all()
     serializer_class = AstronomyShowSerializer
     permission_classes = (IsAdminOrReadOnly,)
-
-    @staticmethod
-    def _params_to_ints(qs):
-        """Converts a list of string IDs to a list of integers"""
-        return [int(str_id) for str_id in qs.split(",")]
 
     def get_queryset(self):
         """Retrieve the astronomy show with filters by title and themes"""
@@ -67,7 +49,7 @@ class AstronomyShowViewSet(
             queryset = queryset.filter(title__icontains=title)
 
         if themes:
-            themes_ids = self._params_to_ints(themes)
+            themes_ids = params_to_ints(themes)
             queryset = queryset.filter(themes__id__in=themes_ids)
 
         return queryset.distinct()
@@ -78,22 +60,10 @@ class AstronomyShowViewSet(
         return AstronomyShowSerializer
 
 
-class PlanetariumDomeViewSet(
-    mixins.ListModelMixin,
-    mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.DestroyModelMixin,
-    viewsets.GenericViewSet
-):
+class PlanetariumDomeViewSet(viewsets.ModelViewSet):
     queryset = PlanetariumDome.objects.all()
     serializer_class = PlanetariumDomeSerializer
     permission_classes = (IsAdminOrReadOnly,)
-
-    @staticmethod
-    def _params_to_ints(qs):
-        """Converts a list of string IDs to a list of integers"""
-        return [int(str_id) for str_id in qs.split(",")]
 
     def get_queryset(self):
         """Retrieve the planetarium dome with filter by name"""
@@ -104,22 +74,10 @@ class PlanetariumDomeViewSet(
         return queryset.distinct()
 
 
-class ShowSessionViewSet(
-    mixins.ListModelMixin,
-    mixins.CreateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.DestroyModelMixin,
-    viewsets.GenericViewSet
-):
+class ShowSessionViewSet(viewsets.ModelViewSet):
     queryset = ShowSession.objects.all()
     serializer_class = ShowSessionSerializer
     permission_classes = (IsAdminOrReadOnly,)
-
-    @staticmethod
-    def _params_to_ints(qs):
-        """Converts a list of string IDs to a list of integers"""
-        return [int(str_id) for str_id in qs.split(",")]
 
     def get_queryset(self):
         """Retrieve the show session with filters by title, theme, show_time"""
@@ -133,12 +91,12 @@ class ShowSessionViewSet(
             queryset = queryset.filter(astronomy_show__title__icontains=title)
 
         if themes:
-            themes_ids = self._params_to_ints(themes)
+            themes_ids = params_to_ints(themes)
             queryset = queryset.filter(
                 astronomy_show__themes__id__in=themes_ids)
 
         if show_time:
-            queryset = queryset.filter(show_time__icontains=show_time)
+            queryset = queryset.filter(show_time__date=show_time)
 
         return queryset.distinct()
 
