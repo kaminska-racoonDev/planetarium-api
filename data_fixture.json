@@ -1,0 +1,159 @@
+[
+  {
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+      "email": "admin@planetarium_app.com",
+      "is_staff": true,
+      "is_superuser": true,
+      "password": "pbkdf2_sha256$600000$test$hashedpassword"
+    }
+  },
+  {
+    "model": "user.user",
+    "pk": 2,
+    "fields": {
+      "email": "john@example.com",
+      "is_staff": false,
+      "is_superuser": false,
+      "password": "pbkdf2_sha256$600000$test$hashedpassword"
+    }
+  },
+  {
+    "model": "planetarium_app.showtheme",
+    "pk": 1,
+    "fields": { "name": "Space Exploration" }
+  },
+  {
+    "model": "planetarium_app.showtheme",
+    "pk": 2,
+    "fields": { "name": "Solar System" }
+  },
+  {
+    "model": "planetarium_app.showtheme",
+    "pk": 3,
+    "fields": { "name": "Black Holes" }
+  },
+  {
+    "model": "planetarium_app.showtheme",
+    "pk": 4,
+    "fields": { "name": "Educational" }
+  },
+  {
+    "model": "planetarium_app.astronomyshow",
+    "pk": 1,
+    "fields": {
+      "title": "Journey to Mars",
+      "description": "An epic journey through the red planet's surface and atmosphere."
+    }
+  },
+  {
+    "model": "planetarium_app.astronomyshow",
+    "pk": 2,
+    "fields": {
+      "title": "Black Hole Mystery",
+      "description": "Dive deep into the mysteries of black holes and event horizons."
+    }
+  },
+  {
+    "model": "planetarium_app.astronomyshow",
+    "pk": 3,
+    "fields": {
+      "title": "Our Solar System",
+      "description": "A tour through all the planets and moons of our solar system."
+    }
+  },
+  {
+    "model": "planetarium_app.astronomyshowtheme",
+    "pk": 1,
+    "fields": { "astronomy_show": 1, "show_theme": 1 }
+  },
+  {
+    "model": "planetarium_app.astronomyshowtheme",
+    "pk": 2,
+    "fields": { "astronomy_show": 1, "show_theme": 4 }
+  },
+  {
+    "model": "planetarium_app.astronomyshowtheme",
+    "pk": 3,
+    "fields": { "astronomy_show": 2, "show_theme": 3 }
+  },
+  {
+    "model": "planetarium_app.astronomyshowtheme",
+    "pk": 4,
+    "fields": { "astronomy_show": 3, "show_theme": 2 }
+  },
+  {
+    "model": "planetarium_app.astronomyshowtheme",
+    "pk": 5,
+    "fields": { "astronomy_show": 3, "show_theme": 4 }
+  },
+  {
+    "model": "planetarium_app.planetariumdome",
+    "pk": 1,
+    "fields": { "name": "Main Dome", "rows": 10, "seats_in_row": 15 }
+  },
+  {
+    "model": "planetarium_app.planetariumdome",
+    "pk": 2,
+    "fields": { "name": "Mini Dome", "rows": 5, "seats_in_row": 8 }
+  },
+  {
+    "model": "planetarium_app.showsession",
+    "pk": 1,
+    "fields": {
+      "astronomy_show": 1,
+      "planetarium_dome": 1,
+      "show_time": "2025-08-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium_app.showsession",
+    "pk": 2,
+    "fields": {
+      "astronomy_show": 2,
+      "planetarium_dome": 2,
+      "show_time": "2025-08-01T14:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium_app.showsession",
+    "pk": 3,
+    "fields": {
+      "astronomy_show": 3,
+      "planetarium_dome": 1,
+      "show_time": "2025-08-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium_app.reservation",
+    "pk": 1,
+    "fields": {
+      "created_at": "2025-07-15T09:00:00Z",
+      "user": 2
+    }
+  },
+  {
+    "model": "planetarium_app.reservation",
+    "pk": 2,
+    "fields": {
+      "created_at": "2025-07-15T10:30:00Z",
+      "user": 2
+    }
+  },
+  {
+    "model": "planetarium_app.ticket",
+    "pk": 1,
+    "fields": { "row": 3, "seat": 5, "show_session": 1, "reservation": 1 }
+  },
+  {
+    "model": "planetarium_app.ticket",
+    "pk": 2,
+    "fields": { "row": 3, "seat": 6, "show_session": 1, "reservation": 1 }
+  },
+  {
+    "model": "planetarium_app.ticket",
+    "pk": 3,
+    "fields": { "row": 1, "seat": 2, "show_session": 2, "reservation": 2 }
+  }
+]
