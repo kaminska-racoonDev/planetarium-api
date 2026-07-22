@@ -1,6 +1,5 @@
 from rest_framework import viewsets, mixins
 from planetarium_app.permissions import (
-    IsAdminOrIfAuthenticatedReadOnly,
     IsAdminOrReadOnly,
 )
 from rest_framework.permissions import IsAuthenticated

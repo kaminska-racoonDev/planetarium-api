@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from django.conf import settings
 
 User = get_user_model()
@@ -13,6 +12,9 @@ class Reservation(models.Model):
         on_delete=models.CASCADE,
         related_name="reservations"
     )
+
+    def __str__(self):
+        return f"Reservation of {self.created_at}"
 
 
 class PlanetariumDome(models.Model):
@@ -60,6 +62,9 @@ class ShowSession(models.Model):
         total = self.planetarium_dome.rows * self.planetarium_dome.seats_in_row
         taken = self.ticket_set.count()
         return total - taken
+
+    def __str__(self):
+        return f"{self.astronomy_show.title} - {self.planetarium_dome.name}: {self.show_time}"
 
 
 class Ticket(models.Model):
